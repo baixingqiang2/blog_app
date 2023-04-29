@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>首页</title>
+    <link rel="shortcut icon" href="{% static 'images/Logo_40.png' %}" type="image/x-icon">
+    <style>
+        a{text-decoration:none}
+        a:hover{text-decoration:none}
+    </style>
+    <script>
+        $("ul.layui-fixbar").css("display","none");
+    </script>
+</head>
+<body>
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <!-- QQ互联登陆 -->
+            <div class="blog-user">
+                {% if user.is_authenticated %}
+                    <!-- 如果用户已登录，则显示用户名下拉框  -->
+                <ul class="layui-nav">
+                    <li class="layui-nav-item">
+                            <a href="javascript:;"> {{ user.username }}</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="{% url 'users:profile' user.id %}" target="iframe">个人信息</a></dd>
+                            <dd><a href="{% url 'article:article_create' %}" target="iframe">新建文章</a></dd>
+                            <dd><a href="{% url 'article:article_admin'%}" target="iframe">我的文章</a></dd>
+                            <dd><a href="{% url 'users:logout' %}" target="iframe">退出登录</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+                    <!-- 如果用户未登录，则显示登录  -->
+                {% else %}
+                    <li class="layui-nav-item">
+                    <a href="{% url 'users:login' %}">登录</a>
+                    </li>
+                {% endif %}
+            </div>
+
+            <!-- 川塔 -->
+            <a class="blog-logo" href="{% url 'common:home' %}"><img src="{% static 'img/logo.png' %}"></a>
+            <!-- 导航菜单 -->
+
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item layui-this" >
+                    <a href="{% url 'common:home' %}"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{% url 'article:article_list'%}"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{% url 'common:resource'%}"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{% url 'common:timeline'%}"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;展示台</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{% url 'common:timeline' %}">时光树</a></dd>
+                        <dd> <a href="{% url 'common:picturewall'%}">照片墙 </a></dd>
+                        <dd> <a href="{% url 'common:musicland' %}">音乐天地</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{% url 'common:about'%}" target="iframe"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+                </li>
+            </ul>
+            <!-- 手机和平板的导航开关 -->
+            <a class="blog-navicon" href="javascript:;">
+                <i class="fa fa-navicon"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- 新增 -->
+    {% if user.is_authenticated %}
+        <script>
+            function user_delete() {
+                // 调用layer弹窗组件
+                layer.open({
+                    title: "确认删除",
+                    content: "确认删除用户资料吗？",
+                    yes: function(index, layero) {
+                        location.href='{% url "users:delete" user.id %}'
+                    },
+                })
+            }
+        </script>
+    {% endif %}
+</body>
+</html>

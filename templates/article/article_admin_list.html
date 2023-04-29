@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="padding: 3%"></div>
+<div class="blog-main"style="width:80%;margin: auto">
+    <div class="layui-tab ">
+        <ul class="layui-tab-title" style="margin: auto">
+            <li><a href="{% url 'article:article_admin' %}">所有文章</a></li>
+            <li><a href="{% url 'article:article_admin' %}?status=p">已发表</a></li>
+            <li><a href="{% url 'article:article_admin' %}?status=d">草稿箱</a></li>
+            <li style="float: right;width: 70%">
+                <form action="#" role="search" method="get" style="width:70%;margin: auto">
+                 {% csrf_token %}
+                <div class="input-group col-md-12">
+                <input type="text" name="search" id="q" class="form-control" placeholder="搜索文章">
+                <span class="input-group-btn">
+                    <button class="btn btn-default form-control" type="submit" value="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+                </div>
+                </form>
+            </li>
+        </ul>
+         {% if search %}
+                        {% if allarticle %}
+                            <h4><span style="color: red">"{{ search }}"</span>的搜索结果如下：</h4>
+                            <hr>
+                        {% else %}
+                           <div class="shadow" style="text-align:center;font-size:16px;padding:40px 15px;background:#fff;margin-bottom:15px;">
+                        未搜索到与【<span style="color: #FF5722;">{{ search }}</span>】有关的文章，随便看看吧！</div>
+                            <hr>
+                        {% endif %}
+                    {% endif %}
+       <div class="layui-tab-content">
+                <table class="table table-striped " style="width:100%;margin: auto;">
+                    <thead>
+                        <tr >
+                            <th style="width:15%">标题</th>
+                            <th style="width:35%">摘要</th>
+                            <th style="width:10%">类别</th>
+                            <th style="width:10%">发布日期</th>
+                            <th style="width:20%">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     {% for article in articles %}
+                        <tr>
+                            <td>
+                            {{ article.title }}
+                            </td>
+                          <td>
+                            {{ article.excrpet }}
+                            </td>
+                            <td>
+                           {{ article.category.name }}
+                            </td>
+                            <td>
+                            {{ article.pub_date | date:"Y-m-d" }}
+                            </td>
+                             <td style="height: auto;line-height: 15px">
+                                 <a href="{% url 'article:article_detail' article.slug article.id %}"><button type="button" class="layui-btn layui-btn-sm">
+                                    <i class="layui-icon">&#xe63c;</i>
+                                  </button></a>
+                                  <a href="{% url 'article:article_update' article.slug article.id %}"><button type="button" class="layui-btn layui-btn-sm">
+                                    <i class="layui-icon">&#xe642;</i>
+                                  </button></a>
+                                  <button type="button" class="layui-btn layui-btn-sm" onclick="(() => confirm_delete('{% url "article:article_safe_delete" article.slug article.id %}'))()">
+                                    <i class="layui-icon">&#xe640;</i>
+                                  </button>
+                            </td>
+                     {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+<script>
+// 删除文章的函数
+function confirm_delete(url) {
+
+    // 调用layer弹窗组件
+    layer.open({
+        // 弹窗标题
+        title: "确认删除",
+        // 正文
+        content: "确认删除这篇文章吗？",
+        // 点击确定按钮后调用的回调函数
+        btn:['确认','取消'],
+        yes: function(index, layero) {
+            // 指定应当前往的 url
+             window.location.href =url;
+        },
+    })
+
+}
+</script>
+{% endblock %}
+

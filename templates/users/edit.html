@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %} 用户信息修改 {% endblock title %}
+{% block content %}
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+        <meta http-equiv="Content-Language" content="zh-CN">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <title>用户信息修改</title>
+
+        {#    <!-- 本页样式表 -->#}
+        <link href="{% static 'css/edit.css' %}" rel="stylesheet"/>
+    </head>
+    <body>
+    <canvas id="canvas-banner" style="background: #393D49;"></canvas>
+    <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
+    <script type="text/javascript">
+        var canvas = document.getElementById('canvas-banner');
+        canvas.width = window.document.body.clientWidth - 10;//减去滚动条的宽度
+        if (screen.width >= 992) {
+            canvas.height = window.innerHeight * 1 / 3;
+        } else {
+            canvas.height = window.innerHeight * 2 / 7;
+        }
+    </script>
+    <div class="pro_bix shadow edit_box">
+        <div class="pro_container" style="text-align: center">
+            <div class="row edit">
+                <div class="col-12">
+                    <br>
+                    {% if profile.avatar %}
+                        <img src="{{ profile.avatar.url }}" style="max-width: 25%; border-radius: 45%;"
+                             class="col-md-4">
+                        <p>{{ user.username }}</p>
+                    {% else %}
+                        <h5 class="col-md-4">暂无头像</h5>
+                    {% endif %}
+                    <form class="layui-form" enctype="multipart/form-data" action="{% url 'users:edit' user.id %}" method="post">
+                        {% csrf_token %}
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">头像</label>
+                            <div class="layui-input-block">
+                                <input type="file" name="avatar" value="{{ profile.avatar}}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">别名</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="another" required lay-verify="required"
+                                       value="{{ profile.another }}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">电话</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="phone"  lay-verify="required"
+                                value="{{ profile.phone }}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">个签</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="sings" required lay-verify="required"
+                                       value="{{ profile.signs }}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">简介</label>
+                            <div class="layui-input-block">
+                                <textarea name="bio" class="layui-textarea"
+                                          rows="6">{{ profile.bio }}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type='submit'class="layui-btn" >立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/home.js' %}"></script>
+    <script>
+        //Demo
+        layui.use('form', function () {
+            var form = layui.form;
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
+{% endblock content %}
+</body>
+</html>

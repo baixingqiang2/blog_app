@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    用户信息
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>用户信息</title>
+
+{#    <!-- 本页样式表 -->#}
+    <link href="{% static 'css/edit.css' %}" rel="stylesheet" />
+</head>
+<body>
+     <canvas id="canvas-banner" style="background: #393D49;"></canvas>
+    <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
+    <script type="text/javascript">
+        var canvas = document.getElementById('canvas-banner');
+        canvas.width = window.document.body.clientWidth - 10;//减去滚动条的宽度
+        if (screen.width >= 992) {
+            canvas.height = window.innerHeight * 1 / 3;
+        } else {
+            canvas.height = window.innerHeight * 2 / 7;
+        }
+    </script>
+<div class="pro_box">
+{% for user in users %}
+ {% for profile in profiles %}
+    <div class="pro_bix shadow pro_container" >
+    <div class="pro_left">
+        <div>
+            &nbsp; &nbsp;{% if profile.avatar %}
+                    <img src="{{ profile.avatar.url }}"class="col-md-4">
+                {% else %}
+                    <h5 class="col-md-4">暂无头像</h5>
+                {% endif %}
+        </div>
+    </div>
+    <div class="pro_right" >
+        <div style="font-size: 36px;text-align: center;"><strong>{{profile.another}}</strong></div>
+        <table class="layui-table" lay-skin="line"style="background-color:#f5f5f5">
+          <colgroup>
+            <col width="14%">
+            <col width="60%">
+            <col>
+          </colgroup>
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>用户名：</td>
+              <td><p>{{user.username}}</p></td>
+            </tr>
+            <tr>
+              <td>签名：</td>
+              <td><p>{{profile.signs}}</p></td>
+            </tr>
+           <tr>
+              <td>电话：</td>
+              <td><p>{{profile.phone}}</p></td>
+            </tr>
+
+           <tr>
+              <td>邮箱：</td>
+              <td><p>{{user.email}}</p></td>
+            </tr>
+           <tr>
+              <td>简介：</td>
+               <td><p>{{profile.bio}}</p></td>
+            </tr>
+          <tr>
+              <td></td>
+               <td><a href="{% url 'users:edit' user.id %}" class="layui-btn">资料修改</a>
+               <a href="{% url 'users:modified_pwd' user.id %}" class="layui-btn">密码修改</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+   </div>
+    </div>
+
+    {% endfor %}
+{% endfor %}
+</div>
+
+
+
+    <!-- 比较好用的代码着色插件 -->
+    <script src="{% static 'js/prettify.js' %}"></script>
+    <!-- 本页脚本 -->
+    <script src="{% static 'js/detail.js' %}"></script>
+{% endblock content %}
+</body>
+</html>

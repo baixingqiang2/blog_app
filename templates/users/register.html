@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %} 用户信息修改 {% endblock title %}
+{% block content %}
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>注册</title>
+        <link type="text/css" rel="stylesheet" href="{% static 'users/css/register.css' %}"/>
+        <script type="text/javascript" src="{% static 'users/js/register.js' %}"></script>
+        <script type="text/javascript" src="{% static 'common/jquery/jquery-1.11.1.min.js' %}"></script>
+
+    </head>
+
+    <body>
+    <div class="main">
+        <div class="main0">
+            <div class="main_left">
+                <img src="{% static 'img/users/zhuce-image-3.png' %}" class="theimg"/>
+                <img src="{% static 'img/users/zhuce-image-2.png' %}" class="secimg"/>
+                <img src="{% static 'img/users/zhuce-image-1.png' %}" class="firimg"/>
+            </div>
+            <div class="main_right">
+                <div class="main_r_up">
+                    <img src="{% static 'img/users/user.png' %}"/>
+                    <div class="pp">注册</div>
+                </div>
+                <div class="sub" style="padding-right: 3%"><p>已经注册？<a href="{% url 'users:login' %}"><span class="blue">请登录</span></a>
+                </p></div>
+                <form action="." enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="txt txt0">
+                        <span style="float:left">邮箱验证码:</span>
+                        <input name="code" type="text" placeholder="请输入邮箱验证码" class="txtyzmdx"/>
+                        <button id="btn" class="btn txtyzm"style="height: 40px;" onclick="sendVerificationCode('{{ emails }}')">获取验证码</button>
+                        {{ code_error }}
+                    </div>
+                    <div class="txt txt0">
+                        <span style="letter-spacing:8px;">用户名:</span>
+                        <input name="username" type="text" class="txtphone" placeholder="请输入用户名"/>
+                        {{ username_error }}
+                    </div>
+                    <div class="txt txt0">
+                        <span style="letter-spacing:4px;">登录密码:</span>
+                        <input name="password1" type="password" class="txtphone" placeholder="请输入密码"/>
+                    </div>
+                    <div class="txt txt0">
+                        <span style="letter-spacing:4px;">重复密码:</span>
+                        <input name="password2" type="password" class="txtphone" placeholder="请再次输入密码"/>
+                        {{ password_error }}
+                    </div>
+                    <div class="txt txt0">
+                        <a href="{% url 'users:register_email' %}"><span
+                                style=" float:left;color:#31acfb"> 返回上一步 </span></a>
+                        <button type="submit" class="zhucebtn">确认注册</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+            <script>
+            <!--验证码倒计时按钮绑定事件-->
+            var countdown = 60; //总倒计时时间
+var timer; //计时器
+function startCountdown() {
+    var btn = document.getElementById("btn");
+    btn.disabled = true; // 按钮不可用
+    timer = setInterval(function () {
+        countdown--; // 倒计时减1秒
+        if (countdown <= 0) { // 倒计时结束
+            clearInterval(timer); // 清除计时器
+            btn.disabled = false; // 恢复按钮状态
+            btn.textContent = "获取邮箱验证码"; // 恢复默认按钮文字
+            countdown = 60; // 重置倒计时时间
+        } else {
+            btn.textContent = countdown + "s后可重新发送"; // 更新倒计时显示
+        }
+    }, 1000); // 每隔1秒更新一次倒计时
+    }
+ function sendVerificationCode(emails) {
+            // 获取输入的邮箱
+            const formData = new FormData()
+            formData.append('email', emails)
+
+            fetch("/users/send-code/" + emails + '/', {
+                method: "POST",
+                body: formData,
+            })
+                .then(response => {
+                    if (response.success) {
+                        console.log("验证码发送成功！");
+                        // 启动倒计时计时器
+                        startCountdown();
+                    } else {
+                        console.log("验证码发送失败，请重试！");
+                    }
+                });
+        }
+
+         ;
+        document.getElementById("btn").addEventListener("click", startCountdown)
+    </script>
+    </body>
+    </html>
+{% endblock content %}

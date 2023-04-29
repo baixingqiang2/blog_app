@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    首页
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>不落阁 - 点点滴滴 - 时光轴</title>
+    <!-- 本页样式表 -->
+    <link href="{% static 'css/timeline.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/normalize.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/css.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="{% url 'common:home' %}" title="网站首页">网站首页</a>
+                <a href="{% url 'common:timeline' %}" title="展示台">展示台</a>
+                <a><cite>照片墙</cite></a>
+
+            </blockquote>
+            <div class="blog-main">
+                <div class="child-nav shadow">
+                <span class="child-nav-btn "><a href="{% url 'common:timeline' %}">时光树</a></span>
+                <span class="child-nav-btn child-nav-btn-this"><a href="{% url 'common:picturewall' %}">照片墙</a></span>
+                <span class="child-nav-btn "><a href="{% url 'common:musicland' %}">音乐天地</a></span>
+
+                </div>
+            <!--照片墙开始-->
+                <div class="timeline-box shadow">
+                     <ul class="honeycomb" lang="es">
+                            {% for picture in picturewalls %}
+                        <li class="honeycomb-cell">
+                            <img class="honeycomb-cell__image" src="{{ picture.picture_url.url}}">
+                            <div class="honeycomb-cell__title">{{picture.name}}</div>
+                        </li>
+                        {% endfor %}
+                        <li class="honeycomb-cell honeycomb__placeholder"></li>
+                    </ul>
+                </div>
+
+            <!--照片墙结束-->
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 本页脚本 -->
+    <script type="text/javascript">
+        layui.use('jquery', function () {
+            var $ = layui.jquery;
+
+            $(function () {
+                $('.monthToggle').click(function () {
+                    $(this).parent('h3').siblings('ul').slideToggle('slow');
+                    $(this).siblings('i').toggleClass('fa-caret-down fa-caret-right');
+                });
+                $('.yearToggle').click(function () {
+                    $(this).parent('h2').siblings('.timeline-month').slideToggle('slow');
+                    $(this).siblings('i').toggleClass('fa-caret-down fa-caret-right');
+                });
+            });
+        });
+    </script>
+{% endblock content %}
+</body>
+</html>

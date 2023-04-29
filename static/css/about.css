@@ -1,0 +1,329 @@
+﻿/*
+
+@Name：不落阁整站模板源码 
+@Author：Absolutely 
+@Site：http://www.lyblogs.cn
+
+*/
+.layui-tab-brief {
+    background: #fff;
+    min-height: 100vh;
+}
+
+    .layui-tab-brief .layui-tab-title {
+        text-align: center;
+        border-bottom: 1px solid #5FB878;
+    }
+
+        .layui-tab-brief .layui-tab-title li {
+            font-size: 12px;
+        }
+
+    .layui-tab-brief .layui-tab-content {
+        padding: 0;
+    }
+
+.aboutinfo {
+    text-align: center;
+    padding: 0 15px;
+}
+
+.aboutinfo-figure {
+    display: inline-block;
+    margin: 20px auto;
+}
+
+    .aboutinfo-figure img {
+        border-radius: 50px;
+    }
+
+.aboutinfo-nickname {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+}
+
+.aboutinfo-introduce {
+    margin: 20px auto;
+    font-size: 18px;
+    width: 90%;
+}
+
+.aboutinfo-location {
+    color: #808080;
+    margin: 15px;
+}
+
+.aboutinfo-contact {
+    margin: 15px;
+}
+
+    .aboutinfo-contact > a {
+        padding: 0 10px;
+    }
+
+.aboutinfo-abstract {
+    width: 90%;
+    margin: 0 auto;
+}
+
+    .aboutinfo-abstract > h1 {
+        font-weight: bold;
+        font-size: 16px;
+        text-align: left;
+        margin-top: 25px;
+    }
+
+    .aboutinfo-abstract > p {
+        margin: 5px 0;
+        font-size: 14px;
+        text-align: left;
+        text-indent: 2em;
+    }
+
+#frinedlink {
+    display: none; /*手机端不显示友情链接，样式没写好，会乱*/
+}
+
+.friendlink {
+    padding: 0 15px;
+}
+
+    .friendlink li {
+        width: 30%;
+        margin: 0 1%;
+        margin-top: 10px;
+        float: left;
+    }
+
+.friendlink-item {
+    box-shadow: inset 0 0 2px #5FB878;
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+    text-align: left;
+    min-height: 45px;
+    position: relative;
+}
+
+    .friendlink-item:hover {
+        box-shadow: 0 0 2px #5FB878;
+    }
+
+.friendlink-item-pic {
+    display: inline-block;
+    position: absolute;
+    left: 10%;
+    margin: 0 10px;
+}
+
+    .friendlink-item-pic img {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        left: 0px;
+        border-radius: 50px;
+    }
+
+.friendlink-item-title {
+    font-size: 17px;
+    margin-left: 65px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.friendlink-item-domain {
+    font-size: 13px;
+    margin-left: 65px;
+    text-align: center;
+    line-height: 20px;
+    margin-top: 5px;
+}
+
+.leavemessage .blog-comment li:first-child {
+    border-top: 1px dotted #01AAED;
+}
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+    .layui-tab-brief .layui-tab-title li {
+        font-size: 14px;
+    }
+
+    #frinedlink {
+        display: inline-block;
+    }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+    .blog-container {
+        width: 962px;
+    }
+}
+
+/* Basic Grey */
+
+.basic-grey {
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    max-width: 500px;
+
+    background: #F7F7F7;
+
+    padding: 25px 15px 25px 10px;
+
+    font: 12px Georgia, "Times New Roman", Times, serif;
+
+    color: #888;
+
+    text-shadow: 1px 1px 1px #FFF;
+
+    border: 1px solid #E4E4E4;
+
+}
+
+.basic-grey h1 {
+
+    font-size: 25px;
+
+    padding: 0px 0px 10px 40px;
+
+    display: block;
+
+    border-bottom: 1px solid #E4E4E4;
+
+    margin: -10px -15px 30px -10px;;
+
+    color: #888;
+
+}
+
+.basic-grey h1 > span {
+
+    display: block;
+
+    font-size: 11px;
+
+}
+
+.basic-grey label {
+
+    display: block;
+
+    margin: 0px;
+
+}
+
+.basic-grey label > span {
+
+    float: left;
+
+    width: 20%;
+
+    text-align: right;
+
+    padding-right: 10px;
+
+    margin-top: 10px;
+
+    color: #888;
+
+}
+
+.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
+
+    border: 1px solid #DADADA;
+
+    color: #888;
+
+    height: 30px;
+
+    margin-bottom: 16px;
+
+    margin-right: 6px;
+
+    margin-top: 2px;
+
+    outline: 0 none;
+
+    padding: 3px 3px 3px 5px;
+
+    width: 70%;
+
+    font-size: 12px;
+
+    line-height: 15px;
+
+    box-shadow: inset 0px 1px 4px #ECECEC;
+
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+
+}
+
+.basic-grey textarea {
+
+    padding: 5px 3px 3px 5px;
+
+}
+
+.basic-grey select {
+
+    background: #FFF no-repeat right;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+
+    text-indent: 0.01px;
+
+    text-overflow: '';
+
+    width: 70%;
+
+    height: 35px;
+
+    line-height: 25px;
+
+}
+
+.basic-grey textarea {
+
+    height: 100px;
+
+}
+
+.basic-grey .button {
+
+    background: #E27575;
+    /*background: #5FB878;*/
+
+    border: none;
+
+    padding: 10px 25px 10px 25px;
+
+    color: #FFF;
+
+    box-shadow: 1px 1px 5px #B6B6B6;
+
+    border-radius: 3px;
+
+    text-shadow: 1px 1px 1px #9E3F3F;
+
+    cursor: pointer;
+
+}
+
+.basic-grey .button:hover {
+
+    /*background: #CF7A7A*/
+    background: #5FB878
+
+}

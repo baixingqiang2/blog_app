@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %} 用户信息修改 {% endblock title %}
+{% block content %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<link type="text/css" rel="stylesheet" href="{% static 'css/users/login.css' %}" />
+<script type="text/javascript" src="{% static 'common/jquery/jquery-1.11.1.min.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	var height=$(document).height();
+	$('.main').css('height',height);
+})
+</script>
+</head>
+
+<body>
+<div class="main">
+  <div class="main0">
+     <div class="main_left">
+        <img src="{% static 'img/users/login-image-3.png' %}" class="theimg"/>
+        <img src="{% static 'img/users/login-image-2.png' %}" class="secimg"/>
+        <img src="{% static 'img/users/login-image-1.png' %}" class="firimg"/>
+     </div>
+     <div class="main_right">
+        <div class="main_r_up">
+            <img src="{% static 'img/users/user.png' %}" />
+            <div class="pp">登录</div>
+        </div>
+        <div class="sub" style="padding-right: 3%"><p>还没有账号？<a href="{% url 'users:register_email'%}"><span class="blue">立即注册</span></a></p></div>
+         <form action="." enctype="multipart/form-data" method="post">
+             {% csrf_token %}
+         <div class="txt">
+            <span style="letter-spacing:8px;">用户名:</span>
+            <input name="username" type="text" class="txtphone" placeholder="请输入注册手机号或用户名"/>
+        {{ username_error }}
+         </div>
+        <div class="txt">
+            <span style="letter-spacing:4px;">登录密码:</span>
+            <input name="password" type="password" class="txtphone" placeholder="请输入登录密码"/>
+            {{ password_error }}
+        </div>
+        <div class="xieyi">
+            <input name="" type="checkbox" value="" checked="checked"/>
+            记住我 <a href="{% url 'users:forgot_password'%}"><span class="blue" style=" padding-left:130px; cursor:pointer">忘记密码?</span></a>
+        </div>
+         <br>
+
+         <button type="submit" class="xiayibu">登录</button>
+             </form>
+     </div>
+  </div>
+</div>
+<script src="{% static 'js/users/login-forms.js' %}"></script>
+</body>
+</html>
+{% endblock content %}

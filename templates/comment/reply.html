@@ -1,0 +1,32 @@
+<div class="comment-reply">
+{% for reply in child.get_children %}
+    {% if reply %}
+        <div class="comment level-{{ child.level }}">
+            <img src="{{ reply.author.avatar.url }}" alt="{{reply.author}}" />
+            <div class="info">
+                <span class="username">{{reply.author}} 回复 {{reply.reply_to}}</span><span> {{ reply.content }}</span>
+            </div>
+            <p class="info"><span class="time">{{reply.pub_date}}</span><a id="toggle-form-btn-{{ reply.id }}" class="btn-reply">回复</a></p>
+             {% if not reply.is_leaf_node %}<i id="comment-btn-{{ reply.id }}" class="fa fa-caret-down" style="float: right">展开评论</i> {% endif %}
+        <div id="my-form-{{ reply.id }}" style="display: none;">
+        <form class="layui-form blog-editor" action="{% url 'comment:reply_comment' article.slug article.id reply.id %}" method="POST" enctype="multipart/form-data">
+           {% csrf_token %}
+            <div class="layui-form-item">
+                <textarea name="content" lay-verify="replyContent" placeholder="请输入回复内容" class="layui-textarea" style="min-height:80px;"></textarea>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-mini" lay-submit="formReply" lay-filter="formReply">回复评论</button>
+            </div>
+        </form>
+        </div>
+        </div>
+        <hr>
+        <div id="comment-info-{{ reply.id }}"style="display: none;">
+            {% include 'comment/reply.html' with child=reply %}
+        </div>
+
+    {% endif %}
+
+{% endfor %}
+
+</div>

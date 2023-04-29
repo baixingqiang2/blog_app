@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+{% extends "base.html" %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    首页
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+        <meta http-equiv="Content-Language" content="zh-CN">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <title>川塔 - 资源分享</title>
+        <!-- 本页样式表 -->
+        <link href="{% static 'css/resource.css' %}" rel="stylesheet"/>
+    </head>
+    <body>
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="{% url 'common:home' %}home.html" title="网站首页">网站首页</a>
+                <a href="{% url 'common:resource' %}">资源分享</a>
+                {% if resources.get.slug != null %}
+                <a><cite>{{ resources.get.category }}</cite></a>
+                {% else %}
+                {% endif %}
+            </blockquote>
+            <div class="blog-main">
+
+                <div class="blog-main">
+                    <div class="child-nav shadow">
+                        <span class="child-nav-btn child-nav-btn-this"><a
+                                href="{% url 'common:resource' %}">全部</a></span>
+                        {% for category in categorys %}
+                            <span class="child-nav-btn">
+                                <a href="{% url 'resource:resource' %}?slug={{category.slug }}">
+                                    {{category.name }}
+                                </a>
+                            </span>
+
+                        {% endfor %}
+                    </div>
+                    <div class="resource-main">
+                        <div class="resource-main">
+                            {% for resource in resources %}
+                                <div class="resource shadow">
+                                    <div class="resource-cover">
+                                        <a href="javascript:layer.msg(&#39;这里填演示地址&#39;)" target="_blank">
+                                            <img src="../images/cover/201703051349045432.jpg"
+                                                 alt="{{ resource.name }}"/>
+                                        </a>
+                                    </div>
+                                    <h1 class="resource-title"><a href="javascript:layer.msg(&#39;这里填演示地址&#39;)"
+                                                                  target="_blank">{{ resource.name }}</a></h1>
+                                    <p class="resource-abstract">{{ resource.excerpt }}</p>
+                                    <div class="resource-info">
+                                        <span class="category"><a href="javascript:layer.msg(&#39;这里跳转到相应分类&#39;)"><i
+                                                class="fa fa-tags fa-fw"></i>&nbsp;{{ resource.category.name}}</a></span>
+                                        <span class="author"><i class="fa fa-user fa-fw"></i>川塔</span>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="resource-footer">
+                                        <a class="layui-btn layui-btn-small layui-btn-primary"
+                                           href="javascript:layer.msg(&#39;这里填演示地址&#39;)" target="_blank"><i
+                                                class="fa fa-eye fa-fw"></i>演示</a>
+                                        <a class="layui-btn layui-btn-small layui-btn-primary"
+                                           href="{{ resource.file.url }}" target="_blank"><i
+                                                class="fa fa-download fa-fw"></i>下载</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <!-- 清除浮动 -->
+                            <div class="clear"></div>
+
+                        </div>
+                        <!-- 清除浮动 -->
+                        <div class="clear"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+</body>
+</html>

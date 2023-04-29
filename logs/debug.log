@@ -1,0 +1,1966 @@
+WARNING 2023-04-20 23:28:50,722 log 16000 14016 Not Found: /article/ding-zhe-fu-su/2/kojjl
+WARNING 2023-04-21 13:28:05,286 log 9612 18332 Not Found: /favicon.ico
+ERROR 2023-04-21 13:41:14,738 log 12024 18232 Internal Server Error: /article/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'register'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 79, in article_list
+    return render(request, 'html/article.html', context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\env\myblog\lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\env\myblog\lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\env\myblog\lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "F:\env\myblog\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'register' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+django_tables2
+i18n
+l10n
+log
+mptt_admin
+mptt_tags
+simpletags
+static
+tz
+widget_tweaks
+ERROR 2023-04-21 13:47:24,879 log 4436 4572 Internal Server Error: /users/register/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\views.py", line 99, in user_register_fist
+    res_email = send_code_email(email)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\util.py", line 51, in send_code_email
+    send_status = send_mail(email_title, email_body, settings.EMAIL_HOST_USER, [email])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+  File "F:\env\myblog\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "E:\Python\Python38\lib\smtplib.py", line 892, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The recipient may contain a non-existent account, please check the recipient address.')
+ERROR 2023-04-21 13:47:51,517 log 4436 7428 Internal Server Error: /users/register/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\views.py", line 99, in user_register_fist
+    res_email = send_code_email(email)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\util.py", line 51, in send_code_email
+    send_status = send_mail(email_title, email_body, settings.EMAIL_HOST_USER, [email])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+  File "F:\env\myblog\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "E:\Python\Python38\lib\smtplib.py", line 892, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The recipient may contain a non-existent account, please check the recipient address.')
+WARNING 2023-04-21 13:48:45,687 log 4436 22012 Not Found: /favicon.ico
+ERROR 2023-04-26 23:03:00,986 log 14840 31300 Internal Server Error: /article/ai-shang-fan-de-sa-fa /2/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 124, in article_detail
+    curr_article = ArticlePost.objects.get(id=id, slug=slug)
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 650, in get
+    raise self.model.DoesNotExist(
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+ERROR 2023-04-26 23:03:39,060 log 14840 31300 Internal Server Error: /article/ai-shang-fan-de-sa-fa /2/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 124, in article_detail
+    curr_article = ArticlePost.objects.get(id=id, slug=slug)
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 650, in get
+    raise self.model.DoesNotExist(
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+ERROR 2023-04-27 13:47:38,875 log 30456 4968 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 182, in article_create
+    new_article.author = User.objects.get(id=1)
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 196, in __get__
+    raise AttributeError(
+AttributeError: Manager isn't available; 'auth.User' has been swapped for 'users.Profile'
+ERROR 2023-04-27 13:48:23,408 log 10888 26192 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 184, in article_create
+    if article_post_form.avatar == '':
+AttributeError: 'ArticlePostForm' object has no attribute 'avatar'
+ERROR 2023-04-27 13:49:47,267 log 7632 11380 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 184, in article_create
+    if not article_post_form.avatar:
+AttributeError: 'ArticlePostForm' object has no attribute 'avatar'
+ERROR 2023-04-27 13:50:28,479 log 23608 11464 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 184, in article_create
+    if article_post_form.avatar == None:
+AttributeError: 'ArticlePostForm' object has no attribute 'avatar'
+ERROR 2023-04-27 13:50:42,629 log 29852 13184 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 148, in execute
+    result = self._query(query)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 310, in _query
+    conn.query(q)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 775, in _read_query_result
+    result.read()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "F:\env\myblog\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "F:\env\myblog\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'excerpt' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 188, in article_create
+    new_article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 114, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1006, in _save_table
+    results = self._do_insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1047, in _do_insert
+    return manager._insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1791, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1660, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 148, in execute
+    result = self._query(query)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 310, in _query
+    conn.query(q)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 775, in _read_query_result
+    result.read()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "F:\env\myblog\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "F:\env\myblog\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.DataError: (1406, "Data too long for column 'excerpt' at row 1")
+ERROR 2023-04-27 13:53:54,312 log 29852 13184 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 148, in execute
+    result = self._query(query)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 310, in _query
+    conn.query(q)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 775, in _read_query_result
+    result.read()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "F:\env\myblog\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "F:\env\myblog\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'excerpt' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 188, in article_create
+    new_article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 114, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1006, in _save_table
+    results = self._do_insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1047, in _do_insert
+    return manager._insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1791, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1660, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 148, in execute
+    result = self._query(query)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 310, in _query
+    conn.query(q)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 775, in _read_query_result
+    result.read()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "F:\env\myblog\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "F:\env\myblog\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.DataError: (1406, "Data too long for column 'excerpt' at row 1")
+ERROR 2023-04-27 13:54:43,815 log 32408 13216 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 148, in execute
+    result = self._query(query)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 310, in _query
+    conn.query(q)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 775, in _read_query_result
+    result.read()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "F:\env\myblog\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "F:\env\myblog\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'excerpt' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 188, in article_create
+    new_article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 114, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1006, in _save_table
+    results = self._do_insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1047, in _do_insert
+    return manager._insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1791, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1660, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\env\myblog\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\env\myblog\lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 148, in execute
+    result = self._query(query)
+  File "F:\env\myblog\lib\site-packages\pymysql\cursors.py", line 310, in _query
+    conn.query(q)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 775, in _read_query_result
+    result.read()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "F:\env\myblog\lib\site-packages\pymysql\connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "F:\env\myblog\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "F:\env\myblog\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.DataError: (1406, "Data too long for column 'excerpt' at row 1")
+WARNING 2023-04-27 13:55:35,720 log 14664 15672 Bad Request: /article/create/
+WARNING 2023-04-27 13:57:55,869 log 14664 15672 Bad Request: /article/create/
+ERROR 2023-04-27 13:59:10,695 log 7552 21452 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 184, in article_create
+    if article_post_form.avatar == None:
+AttributeError: 'ArticlePostForm' object has no attribute 'avatar'
+WARNING 2023-04-27 14:02:49,855 log 32184 15404 Bad Request: /article/create/
+WARNING 2023-04-27 14:05:13,467 log 25604 3076 Bad Request: /article/create/
+ERROR 2023-04-27 14:05:26,819 log 25604 3076 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'image'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 185, in article_create
+    new_article.avatar = request.FILES['image']
+  File "F:\env\myblog\lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'image'
+WARNING 2023-04-27 14:07:40,872 log 18052 13180 Bad Request: /article/create/
+ERROR 2023-04-27 14:13:00,596 log 31712 28620 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 189, in article_create
+    new_article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 117, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1006, in _save_table
+    results = self._do_insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1047, in _do_insert
+    return manager._insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1791, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1659, in execute_sql
+    for sql, params in self.as_sql():
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1583, in as_sql
+    value_rows = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1584, in <listcomp>
+    [
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1585, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1533, in pre_save_val
+    return field.pre_save(obj, add=True)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 14:14:03,682 log 31712 28620 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 189, in article_create
+    new_article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 117, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1006, in _save_table
+    results = self._do_insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 1047, in _do_insert
+    return manager._insert(
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1791, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1659, in execute_sql
+    for sql, params in self.as_sql():
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1583, in as_sql
+    value_rows = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1584, in <listcomp>
+    [
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1585, in <listcomp>
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\compiler.py", line 1533, in pre_save_val
+    return field.pre_save(obj, add=True)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 14:20:10,043 log 25376 18020 Internal Server Error: /article/create/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 189, in article_create
+    new_article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 121, in save
+    image = Image.open(self.avatar)
+  File "F:\env\myblog\lib\site-packages\PIL\Image.py", line 2847, in open
+    fp.seek(0)
+  File "F:\env\myblog\lib\site-packages\django\core\files\utils.py", line 46, in <lambda>
+    seek = property(lambda self: self.file.seek)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 47, in _get_file
+    self._file = self.storage.open(self.name, "rb")
+  File "F:\env\myblog\lib\site-packages\django\core\files\storage.py", line 40, in open
+    return self._open(name, mode)
+  File "F:\env\myblog\lib\site-packages\django\core\files\storage.py", line 276, in _open
+    return File(open(self.path(name), mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Administrator\\Desktop\\python文件\\mywebapp\\myblog\\blog_app\\media\\media\\article\\default.jpg'
+WARNING 2023-04-27 14:22:55,502 log 30468 11048 Bad Request: /article/create/
+ERROR 2023-04-27 14:23:10,379 log 30468 11048 Internal Server Error: /article/shi-fa-song-dao-fa-song-dao/2/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 125, in article_detail
+    curr_article = ArticlePost.objects.get(id=id, slug=slug)
+  File "F:\env\myblog\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 650, in get
+    raise self.model.DoesNotExist(
+article.models.ArticlePost.DoesNotExist: ArticlePost matching query does not exist.
+WARNING 2023-04-27 14:23:13,769 log 30468 11048 Not Found: /media/media/article/default.jpg
+WARNING 2023-04-27 14:23:18,548 log 30468 11048 Not Found: /media/media/article/default.jpg
+WARNING 2023-04-27 14:23:37,019 log 30468 11048 Not Found: /media/media/article/default.jpg
+WARNING 2023-04-27 14:25:23,048 log 27568 26024 Bad Request: /article/create/
+WARNING 2023-04-27 14:30:49,323 log 26236 13492 Bad Request: /article/create/
+WARNING 2023-04-27 14:32:00,306 log 27456 16288 Bad Request: /article/create/
+WARNING 2023-04-27 14:32:26,725 log 32480 17752 Not Found: /media/media/article/default.jpg
+WARNING 2023-04-27 14:32:29,147 log 32480 17752 Not Found: /media/media/article/default.jpg
+WARNING 2023-04-27 14:32:30,838 log 32480 17752 Not Found: /media/media/article/default.jpg
+WARNING 2023-04-27 14:36:26,628 log 32480 27040 Bad Request: /admin/article/articlepost/
+ERROR 2023-04-27 16:06:04,367 log 29076 28656 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 250, in article_update
+    article.category = request.POST['category']
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'on'": "ArticlePost.category" must be a "Category" instance.
+ERROR 2023-04-27 16:07:00,845 log 29076 28656 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 250, in article_update
+    article.category = request.POST['category']
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'on'": "ArticlePost.category" must be a "Category" instance.
+ERROR 2023-04-27 16:10:03,431 log 1636 6748 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 250, in article_update
+    article.category = request.POST['category']
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'on'": "ArticlePost.category" must be a "Category" instance.
+ERROR 2023-04-27 16:10:10,620 log 1636 6748 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 250, in article_update
+    article.category = request.POST['category']
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'on'": "ArticlePost.category" must be a "Category" instance.
+ERROR 2023-04-27 16:18:53,437 log 25452 23900 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'category'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 250, in article_update
+    article.category = request.POST['category']
+  File "F:\env\myblog\lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'category'
+ERROR 2023-04-27 16:23:23,644 log 13720 20136 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 16:23:46,679 log 13720 20136 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 16:24:37,143 log 28324 3820 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 250, in article_update
+    article.category = request.POST['category']
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_descriptors.py", line 237, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'web前端'": "ArticlePost.category" must be a "Category" instance.
+ERROR 2023-04-27 16:24:56,693 log 26476 26824 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 257, in article_update
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 116, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 967, in _save_table
+    values = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 971, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 16:25:33,611 log 26476 26824 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 257, in article_update
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 116, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 967, in _save_table
+    values = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 971, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 16:26:09,521 log 26476 26824 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 257, in article_update
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 116, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 967, in _save_table
+    values = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 971, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 16:26:09,612 log 26476 26824 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 257, in article_update
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 116, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 967, in _save_table
+    values = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 971, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 16:27:07,361 log 26476 26824 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 257, in article_update
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 116, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 967, in _save_table
+    values = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 971, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 16:29:17,718 log 18788 23832 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 16:30:01,984 log 18788 23832 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 16:30:45,261 log 18788 23832 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 16:31:52,714 log 2800 32488 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 255, in article_update
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 116, in save
+    super().save(*args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 812, in save
+    self.save_base(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 863, in save_base
+    updated = self._save_table(
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 967, in _save_table
+    values = [
+  File "F:\env\myblog\lib\site-packages\django\db\models\base.py", line 971, in <listcomp>
+    (getattr(self, f.attname) if raw else f.pre_save(self, False)),
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\files.py", line 313, in pre_save
+    if file and not file._committed:
+AttributeError: 'function' object has no attribute '_committed'
+ERROR 2023-04-27 16:33:24,892 log 17048 30460 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 16:33:41,535 log 17048 30460 Internal Server Error: /article/update/shi-fa-song-dao-fa-song-dao/9/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.article_update didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 17:09:12,635 log 11464 10836 Internal Server Error: /article/wa-shou-fei-dan-as/14/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 165, in article_detail
+    return render(request, 'article/detail.html', context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\env\myblog\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'update_status' with arguments '('wa-shou-fei-dan-as', 14)' not found. 1 pattern(s) tried: ['article/update\\-status/\\Z']
+ERROR 2023-04-27 17:10:06,829 log 24964 14656 Internal Server Error: /article/update-status/wa-shou-fei-dan-as/14/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view article.views.update_status didn't return an HttpResponse object. It returned None instead.
+ERROR 2023-04-27 17:11:01,416 log 11460 31552 Internal Server Error: /article/update-status/wa-shou-fei-dan-as/14/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\utils\deprecation.py", line 138, in __call__
+    response = self.process_response(request, response)
+  File "F:\env\myblog\lib\site-packages\django\middleware\common.py", line 108, in process_response
+    if response.status_code == 404 and self.should_redirect_with_slash(request):
+AttributeError: 'ArticlePost' object has no attribute 'status_code'
+ERROR 2023-04-27 17:11:24,560 log 11460 1784 Internal Server Error: /article/update-status/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\utils\deprecation.py", line 138, in __call__
+    response = self.process_response(request, response)
+  File "F:\env\myblog\lib\site-packages\django\middleware\common.py", line 108, in process_response
+    if response.status_code == 404 and self.should_redirect_with_slash(request):
+AttributeError: 'ArticlePost' object has no attribute 'status_code'
+ERROR 2023-04-27 17:16:15,823 log 26924 16160 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_user = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0000026721984070>>.
+ERROR 2023-04-27 17:23:00,779 log 23752 25568 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 162, in article_detail
+    'like_user':like_user,
+NameError: name 'like_user' is not defined
+ERROR 2023-04-27 17:24:19,410 log 23752 25568 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 162, in article_detail
+    'like_user':like_user,
+NameError: name 'like_user' is not defined
+ERROR 2023-04-27 17:24:49,109 log 10108 29356 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 162, in article_detail
+    'like_user':like_user,
+NameError: name 'like_user' is not defined
+ERROR 2023-04-27 17:25:04,026 log 10108 29356 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 162, in article_detail
+    'like_user':like_user,
+NameError: name 'like_user' is not defined
+ERROR 2023-04-27 17:25:08,372 log 10108 29356 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 162, in article_detail
+    'like_user':like_user,
+NameError: name 'like_user' is not defined
+ERROR 2023-04-27 17:28:36,141 log 26568 18704 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC68400>>.
+ERROR 2023-04-27 17:30:53,712 log 26568 18704 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BCAEA60>>.
+ERROR 2023-04-27 17:31:27,043 log 26568 18704 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC76DF0>>.
+ERROR 2023-04-27 17:31:29,656 log 26568 18704 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BFAC820>>.
+ERROR 2023-04-27 17:32:35,665 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC96F10>>.
+ERROR 2023-04-27 17:33:51,159 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BF82C70>>.
+ERROR 2023-04-27 17:33:52,126 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BFAC670>>.
+ERROR 2023-04-27 17:33:52,552 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC76B80>>.
+ERROR 2023-04-27 17:33:52,908 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC83250>>.
+ERROR 2023-04-27 17:33:53,557 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC76DF0>>.
+ERROR 2023-04-27 17:33:54,617 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BC96FD0>>.
+ERROR 2023-04-27 17:34:11,765 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BCC1460>>.
+ERROR 2023-04-27 17:34:14,569 log 26568 21148 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_users = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000002180BCA1E80>>.
+ERROR 2023-04-27 17:35:11,080 log 31508 23252 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 132, in article_detail
+    like_user = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x00000206602C97C0>>.
+ERROR 2023-04-27 17:37:30,420 log 3840 9544 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2018, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'SimpleLazyObject'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 133, in article_detail
+    like_user = like_form.filter(like_user=request.user)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "F:\env\myblog\lib\site-packages\django\db\models\sql\query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "F:\env\myblog\lib\site-packages\django\db\models\fields\__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x000001CF823ADC70>>.
+WARNING 2023-04-27 20:55:35,932 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:36,083 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:38,433 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:38,469 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:40,387 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:40,415 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:41,438 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:41,464 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:42,423 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:42,450 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:42,984 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,010 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,263 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,288 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,470 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,496 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,674 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,699 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,901 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:43,924 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:44,174 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:44,198 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:55:49,668 log 30920 9236 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:57:56,518 log 30920 9236 Not Found: /media/article/default.jpg
+ERROR 2023-04-27 20:57:59,585 log 30920 21392 Internal Server Error: /article/update-status/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 272, in update_status
+    article.save()
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\models.py", line 120, in save
+    image = Image.open(self.avatar)
+  File "F:\env\myblog\lib\site-packages\PIL\Image.py", line 2895, in open
+    raise UnidentifiedImageError(
+PIL.UnidentifiedImageError: cannot identify image file <ImageFieldFile: ../media/article/default.jpg>
+WARNING 2023-04-27 20:58:03,224 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:05,587 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:07,195 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:07,971 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:11,133 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:11,755 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:12,210 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:12,657 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:13,016 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:13,351 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:13,553 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:13,950 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:14,352 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:14,682 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:15,050 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:15,771 log 30920 21392 Not Found: /media/article/default.jpg
+WARNING 2023-04-27 20:58:17,969 log 30920 21392 Not Found: /media/article/default.jpg
+ERROR 2023-04-27 21:21:34,935 log 29732 15096 Internal Server Error: /common/error
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: error_404_view() missing 1 required positional argument: 'exception'
+ERROR 2023-04-27 21:23:36,752 log 9236 26440 Internal Server Error: /common/home/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\common\views.py", line 54, in index_views
+    return render(request, 'home.html',context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\env\myblog\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'error_404' not found. 'error_404' is not a valid view function or pattern name.
+WARNING 2023-04-27 21:23:38,733 log 9236 26440 Not Found: /common/error
+ERROR 2023-04-27 21:23:41,938 log 9236 26440 Internal Server Error: /common/home/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\common\views.py", line 54, in index_views
+    return render(request, 'home.html',context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\env\myblog\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'error_404' not found. 'error_404' is not a valid view function or pattern name.
+ERROR 2023-04-27 21:23:50,407 log 9236 26440 Internal Server Error: /common/home/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\common\views.py", line 54, in index_views
+    return render(request, 'home.html',context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\env\myblog\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'error_404' not found. 'error_404' is not a valid view function or pattern name.
+ERROR 2023-04-27 21:23:51,969 log 9236 26440 Internal Server Error: /common/home/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\common\views.py", line 54, in index_views
+    return render(request, 'home.html',context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\env\myblog\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'error_404' not found. 'error_404' is not a valid view function or pattern name.
+ERROR 2023-04-27 21:23:54,050 log 9236 26440 Internal Server Error: /article/a-da-ada/15/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\article\views.py", line 168, in article_detail
+    return render(request, 'article/detail.html', context)
+  File "F:\env\myblog\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\env\myblog\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "F:\env\myblog\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "F:\env\myblog\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "F:\env\myblog\lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\env\myblog\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'error_404' not found. 'error_404' is not a valid view function or pattern name.

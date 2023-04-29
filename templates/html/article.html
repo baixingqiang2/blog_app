@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+{% extends "base.html" %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    首页
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>川塔 - 文章专栏</title>
+    <!--本页样式表-->
+    <link href="{%static 'css/article.css'%}" rel="stylesheet" />
+</head>
+<body>
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="{% url 'common:home' %}" title="网站首页">网站首页</a>
+                <a href="{% url 'article:article_list' %}"title="文章专栏">文章专栏</a>
+                {% if cite_cate %}
+                <a href=""><cite>{{cite_cate}}</cite></a>
+                {% else %}
+                {% endif %}
+
+            </blockquote>
+            <div class="blog-main">
+                <div class="blog-main-left">
+                    <!--搜索文章-->
+                    {% if search %}
+                        {% if allarticle %}
+                            <h4><span style="color: red">"{{ search }}"</span>的搜索结果如下：</h4>
+                            <hr>
+                        {% else %}
+                           <div class="shadow" style="text-align:center;font-size:16px;padding:40px 15px;background:#fff;margin-bottom:15px;">
+                        未搜索到与【<span style="color: #FF5722;">{{ search }}</span>】有关的文章，随便看看吧！</div>
+                            <hr>
+                        {% endif %}
+                    {% endif %}
+                    {% for article in allarticle %}
+
+                            <div class="article shadow">
+                        {% if article.avatar %}
+                        <div class="article-left">
+                            <img src="{{ article.avatar.url }}" alt="avatar"  style="max-width: 100%;border-radius: 20px;border: #ffeeba solid 1px;"/>
+                        </div>
+                        {% endif %}
+                    <div class="article-right">
+                        <div class="article-title">
+                            <a href="{% url 'article:article_detail' article.slug article.id %}">{{ article.title }}</a>
+                        </div>
+                        <div class="article-abstract">
+                            <p class="card-text">{{ article.excrpet }}...</p >
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="article-footer">
+                        <span><i class="fa fa-clock-o"></i>{{ article.create_date}}</span>
+                        <span class="article-author"><i class="fa fa-user"></i>{{ article.author}}</span>
+                        <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{article.category}}</a></span>
+                         {% for tag in article.tags.all %}
+                                <a href="#" class="badge badge-secondary">{{ tag }}</a>
+                        {% endfor %}
+                        <span class="article-viewinfo"><i class="fa fa-eye"></i>{{ article.total_views }}</span>
+                        <span class="article-viewinfo"><i class="fa fa-thumbs-up"></i>{{ article.likes }}</span>
+                        <span class="article-viewinfo"><i class="fa fa-commenting"></i>{{ comments.count }}</span>
+                    </div>
+                    </div>
+                    {% endfor %}
+
+                 <!--翻页按钮开始-->
+                <div class="PageList" style="margin-left: 30%">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-lg">
+                    {% if allarticle.has_previous %}
+                        <li><a href="?page={{ allarticle.previous_page_number }}">&laquo;</a></li>
+                    {% endif %}
+                    {% for content in allarticle.paginator.page_range %}
+                        {% if content == allarticle.number %}
+                            <li class="active" ><a href="?page={{ content }}">{{ content }}</a></li>
+                        {% else %}
+                            <li><a href="?page={{ content }}">{{ content }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if contents.has_next %}
+                        <li><a href="?page={{ contents.next_page_number }}">&raquo;</a></li>
+                    {% endif %}
+                </ul>
+                    </nav>
+                </div>
+                 <!--翻页按钮结束-->
+                </div>
+                <div class="blog-main-right">
+                 <!--搜索栏开始-->
+                    <div class="blog-search">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="search-keywords  shadow">
+                                    <input type="text" name="search" lay-verify="required" placeholder="输入关键词搜索" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="search-submit  shadow">
+                                    <button type="submit" class="search-btn" lay-submit="formSearch" lay-filter="formSearch"><i class="fa fa-search "></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                 <!--搜索栏结束-->
+                 <!--分类导航开始-->
+                    <div class="article-category shadow">
+                        <div class="article-category-title">分类导航</div>
+                        {% for category in catego %}
+                        <a href="{% url 'article:article_list' %}?slug={{category.slug }}">{{ category.name }}</a>
+                        {% endfor %}
+                        <div class="clear"></div>
+                    </div>
+                 <!--分类导航结束-->
+                 <!--作者推荐开始-->
+                    <div class="blog-module shadow">
+                        <div class="blog-module-title">推荐文章</div>
+
+                        <ul class="fa-ul blog-module-ul">
+                             {% for t in tui %}
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a style="font-size: 14px" href="{% url 'article:article_detail' t.slug t.id %}" title="{{ t.title }}">{{t.title}}</a></li>
+                        {% endfor %}
+                        </ul>
+
+                    </div>
+                <!--作者推荐结束-->
+                <!--最新文章开始-->
+                    <div class="blog-module shadow">
+                        <div class="blog-module-title">最新文章</div>
+                        <ul class="fa-ul blog-module-ul">
+                            {% for allat in new_article %}
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a style="font-size: 14px" href="{% url 'article:article_detail' allat.slug allat.id %}" title="{{ allat.title }}">{{allat.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                 <!--最新文章结束-->
+                    <!--右边悬浮 平板或手机设备显示-->
+                    <div class="category-toggle"><i class="fa fa-chevron-left"></i></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+</body>
+</html>
