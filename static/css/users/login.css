@@ -209,12 +209,3 @@ a {
         width: 100%;
     }
 }
-
-@media screen and (max-width: 960px){
-    .main_left{
-        width: 456px;
-        height: 386px;
-        padding-right: 36px;
-    }
-    .main_right{}
-}
