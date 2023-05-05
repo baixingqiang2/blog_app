@@ -196,6 +196,9 @@
             .blog-nav .blog-user img:hover {
                 opacity: .5;
             }
+        .blog-nav .blog-user a {
+            font-size: 14px;
+        }
 
         .blog-nav .blog-user .fa-qq {
             line-height: 64px;

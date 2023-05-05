@@ -1964,3 +1964,8 @@ Traceback (most recent call last):
   File "F:\env\myblog\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'error_404' not found. 'error_404' is not a valid view function or pattern name.
+WARNING 2023-05-04 16:27:19,783 log 32504 12796 Not Found: /favicon.ico
+WARNING 2023-05-05 14:23:05,721 log 28280 24376 Not Found: /favicon.ico
+WARNING 2023-05-05 14:23:30,673 log 28280 27636 Not Found: /favicon.ico
+WARNING 2023-05-05 16:27:10,023 log 28280 29248 Not Found: /common/images/Absolutely.jpg
+WARNING 2023-05-05 16:27:14,356 log 28280 29248 Not Found: /common/images/Absolutely.jpg
