@@ -34,16 +34,18 @@ a {
 }
 
 .main0 {
-    width: 1200px;
-    height: 540px;
+    width: 80%;
+    height: 100%;
     background: #fff;
     margin: 0 auto;
     margin-top: 140px;
+    display: block;
 }
 
 .main_left {
     float: left;
-    width: 647px;
+    width: 50%;
+    height: 100%;
     position: relative
 }
 
@@ -67,10 +69,9 @@ a {
 }
 
 .main_right {
-    width: 456px;
-    height: 386px;
+    width: 50%;
+    height: 100%;
     float: right;
-    padding-right: 36px;
 }
 
 .main_r_up {
@@ -162,7 +163,22 @@ a {
     margin-top: 20px;
     cursor: pointer
 }
+@media screen and (max-width: 420px) {
+  .main{
+    height: 1000px;
+  }
+  .main_left {
+    float: none;
+      height: 20%;
+    width: 100%;
+  }
 
+  .main_right{
+      height: 75%;
+        float: none;
+        width: 100%;
+    }
+}
 .footer {
     width: 100%;
     height: 60px;

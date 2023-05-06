@@ -32,7 +32,7 @@
                     <!-- 如果用户未登录，则显示登录  -->
                 {% else %}
 
-                <li class="layui-nav-item">
+                <li class="layui-nav-item" style="float: right">
                     <a href="{% url 'users:login' %}" style="color: #e2e2e2">登录</a>
                     <span style="color: #5FB878">|</span>
                     <a href="{% url 'users:register_email' %}" style="color: #e2e2e2">注册</a>

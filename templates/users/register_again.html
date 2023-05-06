@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>注册</title>
-<link type="text/css" rel="stylesheet" href="{% static 'css/users/register.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/users/login.css' %}" />
 <script type="text/javascript" src="{% static 'common/jquery/jquery-1.11.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/users/register.js' %}"></script>
 <script type="text/javascript">
@@ -19,7 +19,7 @@ $(document).ready(function () {
 </head>
 
 <body>
-<div class="main">
+<div class="main_register">
   <div class="main0">
      <div class="main_left">
         <img src="{% static 'img/users/zhuce-image-3.png' %}" class="theimg"/>
@@ -32,7 +32,7 @@ $(document).ready(function () {
             <div class="pp">注册</div>
         </div>
 
-        <div class="sub" style="padding-right: 3%"><p>已经注册？<a href="{% url 'users:login' %}"><span class="blue">请登录</span></a></p></div>
+        <div class="sub"><p>已经注册？<a href="{% url 'users:login' %}"><span style="color: #31acfb;">请登录</span></a></p></div>
         <form action="." enctype="multipart/form-data" method="post">
             {% csrf_token %}
          <div class="txt">
@@ -40,16 +40,16 @@ $(document).ready(function () {
              <input name="email" type="email" id='email' class="txtphone" placeholder="请输入邮箱"/>
              {{ email_error }}
         </div>
-        <div class="txt">
+        <div class="txt txt0">
             <span style=" float:left;letter-spacing:10px;">验证码:</span>
-             <input autocomplete="off" id="id_captcha_1" name="captcha_1" type="text" class="txtyzm">
+             <input autocomplete="off" id="id_captcha_1" name="captcha_1" type="text" class="txtyzm" placeholder="请输入图片验证码">
              <img src="{{ image_url}}" alt="" class="captcha code">
              <input id="id_captcha_0" name="captcha_0" type="hidden" value="{{hashkey}}">
              {{ email_form.captcha.errors}}
         </div>
         <div class="xieyi">
             <input name="" type="checkbox" value="" checked="checked"/>
-            我已经阅读并遵守 <span class="blue" style="cursor:pointer">《XXXX服务协议》</span>
+            我已经阅读并遵守 <span style="color: #31acfb;cursor:pointer">《XXXX服务协议》</span>
         </div>
          <br>
             <button type="submit" class="xiayibu">下一步</button>

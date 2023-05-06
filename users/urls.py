@@ -13,7 +13,7 @@ urlpatterns = [
     path(r'register/', views.user_register_fist, name='register_email'),
     # path(r'register/(?<email>[a-z]+)/', views.user_register_two,name='register'),
     path(r'register/(?<str:email>[a-z]+)/', views.user_register_two,name='register'),
-    path(r'', views.user_register_three,name='register_success'),
+    path(r'register/success/', views.user_register_three,name='register_success'),
     # 删除账号
     path(r'delete/<int:id>/', views.user_delete, name='delete'),
     # 用户信息
@@ -25,7 +25,7 @@ urlpatterns = [
     # 找回密码
     path(r'restpwd/',views.forgot_password, name='forgot_password'),
     path(r'restpwd/(?<email>[a-z]+)/',views.reset_password, name='reset_password'),
-    path(r'',views.reset_success, name='reset_success'),
+    path(r'restpwd/success/',views.reset_success, name='reset_success'),
     # 发送验证码
     path('send-code/<email>/', views.send_code, name='send_code'),
 

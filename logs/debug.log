@@ -1969,3 +1969,100 @@ WARNING 2023-05-05 14:23:05,721 log 28280 24376 Not Found: /favicon.ico
 WARNING 2023-05-05 14:23:30,673 log 28280 27636 Not Found: /favicon.ico
 WARNING 2023-05-05 16:27:10,023 log 28280 29248 Not Found: /common/images/Absolutely.jpg
 WARNING 2023-05-05 16:27:14,356 log 28280 29248 Not Found: /common/images/Absolutely.jpg
+WARNING 2023-05-06 15:55:31,066 log 18596 6660 Not Found: /users/send-code//
+WARNING 2023-05-06 15:57:40,283 log 18596 6660 Not Found: /users/send-code//
+ERROR 2023-05-06 22:52:16,519 log 27176 28568 Internal Server Error: /users/send-code/123@qq.com/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\views\decorators\csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\views.py", line 78, in send_code
+    send_code_email(email, verification_code)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\util.py", line 51, in send_code_email
+    send_status = send_mail(email_title, email_body, settings.EMAIL_HOST_USER, [email])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+  File "F:\env\myblog\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "E:\Python\Python38\lib\smtplib.py", line 892, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The recipient may contain a non-existent account, please check the recipient address.')
+ERROR 2023-05-06 22:54:46,653 log 27176 26496 Internal Server Error: /users/send-code/123@qq.com/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\views\decorators\csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\views.py", line 78, in send_code
+    send_code_email(email, verification_code)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\util.py", line 51, in send_code_email
+    send_status = send_mail(email_title, email_body, settings.EMAIL_HOST_USER, [email])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+  File "F:\env\myblog\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "E:\Python\Python38\lib\smtplib.py", line 892, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The recipient may contain a non-existent account, please check the recipient address.')
+ERROR 2023-05-06 22:58:37,364 log 27176 31428 Internal Server Error: /users/send-code/123@qq.com/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\views\decorators\csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\views.py", line 78, in send_code
+    send_code_email(email, verification_code)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\util.py", line 51, in send_code_email
+    send_status = send_mail(email_title, email_body, settings.EMAIL_HOST_USER, [email])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+  File "F:\env\myblog\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "E:\Python\Python38\lib\smtplib.py", line 892, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The recipient may contain a non-existent account, please check the recipient address.')
+ERROR 2023-05-06 22:58:53,840 log 27176 27032 Internal Server Error: /users/send-code/123@qq.com/
+Traceback (most recent call last):
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "F:\env\myblog\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\env\myblog\lib\site-packages\django\views\decorators\csrf.py", line 55, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\views.py", line 78, in send_code
+    send_code_email(email, verification_code)
+  File "C:\Users\Administrator\Desktop\python文件\mywebapp\myblog\blog_app\users\util.py", line 51, in send_code_email
+    send_status = send_mail(email_title, email_body, settings.EMAIL_HOST_USER, [email])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\__init__.py", line 87, in send_mail
+    return mail.send()
+  File "F:\env\myblog\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "F:\env\myblog\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "E:\Python\Python38\lib\smtplib.py", line 892, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The recipient may contain a non-existent account, please check the recipient address.')
+WARNING 2023-05-06 22:59:29,342 log 12864 1256 Not Found: /users/sucess
+WARNING 2023-05-06 22:59:34,411 log 12864 1256 Not Found: /users/sucess
+WARNING 2023-05-06 22:59:35,091 log 12864 1256 Not Found: /users/sucess
