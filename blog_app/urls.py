@@ -30,9 +30,11 @@ urlpatterns = [
     path('comment/', include('comment.urls', namespace='comment')),
     path('resource/', include('resource.urls', namespace='resource')),
     path('captcha/', include('captcha.urls')),
+    path('ueditor/', include('DjangoUeditor.urls')),
 ]
 #添加这行
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
 
 handler404 = error_404_view
 handler403 = error_403_view

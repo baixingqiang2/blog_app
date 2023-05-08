@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from DjangoUeditor.models import UEditorField
 
 from article.models import ArticlePost
 from article.models import ArticlePost
@@ -11,7 +12,7 @@ from users.models import Profile
 
 # # 博文的评论
 class Comment(MPTTModel):
-    content = models.TextField(max_length=500,verbose_name='评论内容')
+    content = UEditorField(max_length=500,verbose_name='评论内容')
     pub_date = models.DateTimeField(auto_now_add=True,verbose_name='评论时间')
     author = models.ForeignKey(Profile, on_delete=models.CASCADE,related_name='comments',verbose_name='评论人')
     article =models.ForeignKey(ArticlePost,on_delete=models.CASCADE,related_name='comments',verbose_name='评论的文章')

@@ -14,12 +14,18 @@
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>不落阁 - 文章专栏 - 文章详情</title>
+    <script type="text/javascript" src="{% static 'ueditor/ueditor.config.js' %}"></script>
+  <script type="text/javascript" src="{% static 'ueditor/ueditor.all.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'ueditor/themes/default/css/ueditor.css' %}"/>
     <link rel="shortcut icon" href="{% static 'images/Logo_40.png' %}" type="image/x-icon">
     <!--Layui-->
     <!-- 比较好用的代码着色插件 -->
     <link href="{% static 'css/prettify.css' %}" rel="stylesheet" />
     <!-- 本页样式表 -->
     <link href="{% static 'css/detail.css' %}" rel="stylesheet" />
+    <script type="text/javascript">
+        var ue = UE.getEditor('detail_editor');
+   </script>
 
 </head>
 <body>
@@ -32,175 +38,195 @@
                 <a><cite>{{ article.title }}</cite></a>
             </blockquote>
             <div class="blog-main">
-                <div style="margin:auto;width: 80%">
-                    <!-- 文章内容 -->
-                    <div class="article-detail shadow">
-                        <div class="article-detail-title">
-                            {{article.title}}
-                        </div>
-                        <div class="article-detail-info">
-                            <span>编辑时间：{{article.update_date}}</span>
-                            <span>作者：{{article.author}}</span>
-                            <span>浏览量：{{ article.total_views }}</span>
-                            {% if article.author == request.user %}
-                                {% if article.status == "d" %}
-                            <a href="{% url 'article:update_status' article.slug article.id %}">发布</a> |
+                        <!-- 文章内容 -->
+                <div class="article-detail shadow">
+                    <div class="article-box1">
+                            <div class="article-detail-title">
+                                {{article.title}}
+                            </div>
+                            <div class="article-detail-info">
+                                <span>编辑时间：{{article.update_date}}</span>
+                                <span>作者：{{article.author}}</span>
+                                <span>浏览量：{{ article.total_views }}</span>
+                                {% if article.author == request.user %}
+                                    {% if article.status == "d" %}
+                                <a href="{% url 'article:update_status' article.slug article.id %}">发布</a> |
+                                        {% else %}
+                                        <a href="{% url 'article:update_status' article.slug article.id %}">草稿</a> |
+                                {% endif %}
+                                    <a href="{% url 'article:article_update' article.slug article.id %}">编辑</a> |
+                                     <a href="#" onclick="(() => confirm_delete('{% url "article:article_safe_delete" article.slug article.id %}'))()">删除</a>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <span style="color:#EE33EE;">标签</span>：
+                                 {% for tag in article.tags.all %}
+                                 <a href="#" class="badge badge-secondary" >{{ tag }} </a>
+                                {% endfor %}
+                            </div> <hr>
+                            <!-- 文章主体 -->
+                            <div class="article-detail-content">
+                                 <p style="text-align:center;">
+                                    <img src="{{article.avatar.url}}" width="32%" height="18%"/>
+                                </p><hr /><br /><br />
+                                <div class="markdown">{{article.body |safe}}</div>
+                                <hr>
+                            </div>
+                            <!-- 文章主体 -->
+                            <!-- 点赞区域 -->
+                            <div style="display: block;text-align: center;">
+                            {% if user.is_authenticated %}
+                                <button  id="like-button"class="btn btn-sm btn-light" data-post-slug="{{ article.slug }}" data-post-id="{{ article.id }}">
+                                    {% if like_user.exists %}
+                                    <i class="fa fa-thumbs-down">取消赞（{{ article.likes }}）</i>
                                     {% else %}
-                                    <a href="{% url 'article:update_status' article.slug article.id %}">草稿</a> |
-                            {% endif %}
-                                <a href="{% url 'article:article_update' article.slug article.id %}">编辑</a> |
-                                 <a href="#" onclick="(() => confirm_delete('{% url "article:article_safe_delete" article.slug article.id %}'))()">删除</a>
-                            {% endif %}
-                        </div>
-                        <div>
-                            <span style="color:#EE33EE;">标签</span>：
-                             {% for tag in article.tags.all %}
-                             <a href="#" class="badge badge-secondary" >{{ tag }} </a>
-                            {% endfor %}
-                        </div> <hr>
-                        <!-- 文章主体 -->
-                        <div class="article-detail-content">
-                             <p style="text-align:center;">
-                                <img src="{{article.avatar.url}}" width="32%" height="18%"/>
-                            </p><hr /><br /><br />
-                            <p>{{article.body |safe}}</p>
-                            <hr>
-                        </div>
-                        <!-- 文章主体 -->
-                        <!-- 点赞区域 -->
-                        <div style="display: block;text-align: center;">
-                        {% if user.is_authenticated %}
-                            <button  id="like-button"class="btn btn-sm btn-light" data-post-slug="{{ article.slug }}" data-post-id="{{ article.id }}">
-                                {% if like_user.exists %}
-                                <i class="fa fa-thumbs-down">取消赞（{{ article.likes }}）</i>
-                                {% else %}
-                                <i class="fa fa-thumbs-up">赞（{{ article.likes }}）</i>
-                                {% endif %}
-                            </button>
-                          {% endif %}
-                            <hr>
-                            {% for like in like_form %}
-                                {{ like.like_user.username}}
-                            {% endfor %}
-
-                        </div>
-                        <!-- 点赞区域 -->
-                        <!-- 上一篇下一篇按钮区域 -->
-                        <div>
-                            <br /><br />
-                             <ul class="pager">
-                             {% if pre_article %}
-                                 <li><a href="{% url 'article:article_detail' pre_article.slug pre_article.id %}">上一篇：{{ pre_article.title }}</a></li>
-                             {% endif %}
-                             {% if next_article %}
-                                <li><a href="{% url 'article:article_detail' next_article.slug next_article.id %}">下一篇：{{ next_article }}</a></li>
+                                    <i class="fa fa-thumbs-up">赞（{{ article.likes }}）</i>
+                                    {% endif %}
+                                </button>
                               {% endif %}
-                             </ul>
-                        </div>
-                         <!-- 上一篇下一篇按钮区域 -->
-                    <!-- 评论区域 -->
-                    <fieldset class="layui-elem-field layui-field-title">
-                      <div class="layui-elem-field layui-field-title">
-                    <div class="layui-field-box">
-                        {% if user.is_authenticated %}
-                                <form class="layui-form blog-editor" action="{% url 'comment:add_comment' article.slug article.id %}" method="POST">
-                                {% csrf_token %}
-                                   <div class="layui-form-item">
-                                        <textarea name="content" lay-verify="content" id="remarkEditor" placeholder="请输入内容" class="layui-textarea layui-hide"></textarea>
-                                    </div>
-                                    <div class="layui-form-item">
-                                        <button class="layui-btn" lay-submit="formLeaveMessage" lay-filter="formLeaveMessage">提交评论</button>
-                                    </div>
-                                </form>
-                            <br>
-                        {% else %}
-                            <br>
-                            <h5 class="row justify-content-center">
-                                请<a href="{% url 'users:login' %}" style="color: #ffe8a1">登录</a>后再评论
-                            </h5>
-                            <br>
-                        {% endif %}
-                        <!-- 显示评论 -->
-                    {% load mptt_tags %}
-                      <div class="blog-module-title">
-                          <span>共有{{ comments.count }}条评论</span>
-                      </div>
-                        <ul class="blog-comment">
-                             {% recursetree comments %}
-                            <li>
-                            {% with comment=node %}
-                                <div class="comment-parent">
-                                    <img src="{{node.author.avatar.url}}" alt="{{node.author}}" />
-                                    <div class="info">
-                                        <span class="username">{{node.author}}</span>
-                                    </div>
-                                    <div class="content">
-                                         {{ node.content }}
-                                    </div>
-                                    <p class="info info-footer"><span class="time">{{node.pub_date}}</span><a id="toggle-form-btn-{{ comment.id }}"class="btn-reply" >回复</a></p>
-                                    {% if not node.is_leaf_node %}
-                                        <i id="comment-btn-{{ comment.id }}" style="float: right" class="fa fa-caret-down" >展开评论{{ comment.count }}</i>{% endif %}
-                                    <div id="my-form-{{ comment.id }}" style="display: none;">
-                                    <form action="{% url 'comment:reply_comment' article.slug article.id comment.id %}" method="POST" enctype="multipart/form-data">
-                                       {% csrf_token %}
-                                        <div class="layui-form-item">
-                                            <textarea name="content" lay-verify="replyContent" placeholder="请输入回复内容" class="layui-textarea" style="min-height:80px;"></textarea>
-                                        </div>
-                                        <div class="layui-form-item">
-                                            <button class="layui-btn layui-btn-mini" lay-submit="formReply" lay-filter="formReply">回复评论</button>
-                                        </div>
-                                    </form>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div id="comment-info-{{ comment.id }}"style="display: none;">
-                                 {% if not node.is_leaf_node %}
-                                     <div class="comment-child">
-                                      {% for child in node.get_children %}
-                                            {% if child %}
-                                                <img src="{{ child.author.avatar.url }}" alt="Absolutely" />
-                                                <div class="info">
-                                                    <span class="username">{{child.author}} 回复 {{child.reply_to}}</span>
-                                                     <span> {{ child.content }}</span>
-                                                </div>
-                                                <p class="info"><span class="time">{{child.pub_date}}</span>
-                                                    <a class="btn-reply"id="toggle-form-btn-{{ child.id }}">回复</a>
-                                                    {% if not child.is_leaf_node %}<i id="comment-btn-{{ child.id }}" class="fa fa-caret-down" style="float: right">展开评论</i> {% endif %}
-                                                    <div id="my-form-{{ child.id }}" style="display: none;">
-                                                    <form action="{% url 'comment:reply_comment' article.slug article.id child.id %}" method="POST" enctype="multipart/form-data">
-                                                       {% csrf_token %}
-                                                        <div class="layui-form-item">
-                                                            <textarea name="content" lay-verify="replyContent" placeholder="请输入回复内容" class="layui-textarea" style="min-height:80px;"></textarea>
-                                                        </div>
-                                                        <div class="layui-form-item">
-                                                            <button class="layui-btn layui-btn-mini" lay-submit="formReply" lay-filter="formReply">回复评论</button>
-                                                        </div>
-                                                    </form>
-                                                    </div>
-                                                </p>
-                                                <hr /><div id="comment-info-{{ child.id }}"style="display: none;">{% include 'comment/reply.html'%}</div>
-                                            {% endif %}
+                                <hr>
+                                {% for like in like_form %}
+                                    {{ like.like_user.username}}
+                                {% endfor %}
 
-
-
-
-                                    {% endfor %}
-                                     </div>
+                            </div>
+                            <!-- 点赞区域 -->
+                            <!-- 上一篇下一篇按钮区域 -->
+                            <div>
+                                <br /><br />
+                                 <ul class="pager">
+                                 {% if pre_article %}
+                                     <li><a href="{% url 'article:article_detail' pre_article.slug pre_article.id %}">上一篇：{{ pre_article.title }}</a></li>
+                                 {% endif %}
+                                 {% if next_article %}
+                                    <li><a href="{% url 'article:article_detail' next_article.slug next_article.id %}">下一篇：{{ next_article }}</a></li>
+                                  {% endif %}
+                                 </ul>
+                            </div>
+                             <!-- 上一篇下一篇按钮区域 -->
+                            <!-- 评论区域 -->
+                            <fieldset class="layui-elem-field layui-field-title">
+                              <div class="layui-elem-field layui-field-title">
+                            <div class="layui-field-box">
+                                {% if user.is_authenticated %}
+                                        <form class="layui-form blog-editor" action="{% url 'comment:add_comment' article.slug article.id %}" method="POST">
+                                        {% csrf_token %}
+                                           <div class="layui-form-item">
+                                               <strong>评论区域</strong>
+                                               <br>
+                                                <textarea name="content" id="detail_editor" placeholder="请输入内容" style="width:98%;height:20%;"></textarea>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <button class="layui-btn" lay-submit="formLeaveMessage" lay-filter="formLeaveMessage">发表评论</button>
+                                            </div>
+                                        </form>
+                                    <br>
+                                {% else %}
+                                    <br>
+                                    <h5 class="row justify-content-center">
+                                        请<a href="{% url 'users:login' %}" style="color: #ffe8a1">登录</a>后再评论
+                                    </h5>
+                                    <br>
                                 {% endif %}
-                                </div>
-                            {% endwith %}
-                            </li>
-                            {% endrecursetree %}
-                                            </ul>
+                                <!-- 显示评论 -->
+                            {% load mptt_tags %}
+                              <div class="blog-module-title">
+                                  <span>共有{{ comments.count }}条评论</span>
+                              </div>
+                                <ul class="blog-comment">
+                                     {% recursetree comments %}
+                                    <li>
+                                    {% with comment=node %}
+                                        <div class="comment-parent">
+                                            <img src="{{node.author.avatar.url}}" alt="{{node.author}}" />
+                                            <div class="info">
+                                                <span class="username">{{node.author}}</span>
+                                            </div>
+                                            <div class="content">
+                                                 {{ node.content }}
+                                            </div>
+                                            <p class="info info-footer"><span class="time">{{node.pub_date}}</span><a id="toggle-form-btn-{{ comment.id }}"class="btn-reply" >回复</a></p>
+                                            {% if not node.is_leaf_node %}
+                                                <i id="comment-btn-{{ comment.id }}" style="float: right" class="fa fa-caret-down" >展开评论{{ comment.count }}</i>{% endif %}
+                                            <div id="my-form-{{ comment.id }}" style="display: none;">
+                                            <form action="{% url 'comment:reply_comment' article.slug article.id comment.id %}" method="POST" enctype="multipart/form-data">
+                                               {% csrf_token %}
+                                                <div class="layui-form-item">
+                                                    <textarea name="content" lay-verify="replyContent" placeholder="请输入回复内容" class="layui-textarea" style="min-height:80px;"></textarea>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <button class="layui-btn layui-btn-mini" lay-submit="formReply" lay-filter="formReply">回复评论</button>
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div id="comment-info-{{ comment.id }}"style="display: none;">
+                                         {% if not node.is_leaf_node %}
+                                             <div class="comment-child">
+                                              {% for child in node.get_children %}
+                                                    {% if child %}
+                                                        <img src="{{ child.author.avatar.url }}" alt="Absolutely" />
+                                                        <div class="info">
+                                                            <span class="username">{{child.author}} 回复 {{child.reply_to}}</span>
+                                                             <span> {{ child.content }}</span>
+                                                        </div>
+                                                        <p class="info"><span class="time">{{child.pub_date}}</span>
+                                                            <a class="btn-reply"id="toggle-form-btn-{{ child.id }}">回复</a>
+                                                            {% if not child.is_leaf_node %}<i id="comment-btn-{{ child.id }}" class="fa fa-caret-down" style="float: right">展开评论</i> {% endif %}
+                                                            <div id="my-form-{{ child.id }}" style="display: none;">
+                                                            <form action="{% url 'comment:reply_comment' article.slug article.id child.id %}" method="POST" enctype="multipart/form-data">
+                                                               {% csrf_token %}
+                                                                <div class="layui-form-item">
+                                                                    <textarea name="content" lay-verify="replyContent" placeholder="请输入回复内容" class="layui-textarea" style="min-height:80px;"></textarea>
+                                                                </div>
+                                                                <div class="layui-form-item">
+                                                                    <button class="layui-btn layui-btn-mini" lay-submit="formReply" lay-filter="formReply">回复评论</button>
+                                                                </div>
+                                                            </form>
+                                                            </div>
+                                                        </p>
+                                                        <hr /><div id="comment-info-{{ child.id }}"style="display: none;">{% include 'comment/reply.html'%}</div>
+                                                    {% endif %}
 
-                   </div>
+
+
+
+                                            {% endfor %}
+                                             </div>
+                                        {% endif %}
+                                        </div>
+                                    {% endwith %}
+                                    </li>
+                                    {% endrecursetree %}
+                                                    </ul>
+
+                           </div>
+                            </div>
+                            </fieldset>
+                            <!-- 发表评论 -->
                     </div>
-                    </fieldset>
-                    <!-- 发表评论 -->
+                    {% block toc %}
+                        {% if article.toc %}
+                    <div class="article-box2">
+                       <div class="category-toggle"><i class="fa fa-chevron-left"></i></div><!--这个div位置不能改，否则需要添加一个div来代替它或者修改样式表-->
+                     <div class="blog-module shadow toc_container">
+                         <h4><strong>目录</strong></h4>
+                        <hr>
+                        <div class="markdown">{{ article.toc|safe }}</div>
+                        <div class="clear"></div>
+                     </div>
                     </div>
+                        {% endif %}
+                    {% endblock toc %}
+
+                </div>
+            </div>
+            </div>
 
         </div>
     </div>
+
     <div class="clear"></div>
 
 {% block script %}

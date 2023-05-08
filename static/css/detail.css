@@ -8,9 +8,21 @@
 
 .article-detail {
     background: #fff;
-    padding: 15px;
     box-shadow: 0 1px 8px #a6a6a6;
-    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 94%;
+}
+
+.article-box1{
+    flex: 3;
+
+}
+.article-box2{
+    flex: 1;
+    padding-top: 9%;
 }
 
 .article-detail-title {
@@ -49,3 +61,32 @@ pre {
     border: 1px solid #ccc !important;
     font-size: 13px !important;
 }
+
+/*目录*/
+ .toc_container {
+        /*background: #f9f9f9;*/
+        /*border: 1px solid #aaa;*/
+        display: inline-block;
+        width: 100%;
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .toc_container ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .toc_container li {
+        line-height: 1.5em;
+        word-wrap: break-word;
+    }
+
+    .toc_container a {
+        color: #cce5ff;
+        text-decoration: none;
+    }
+
+    .toc_container a:hover {
+        text-decoration: underline;
+    }

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'mptt',
     'captcha',
     'pure_pagination',
+    'DjangoUeditor',
+    'ckeditor',
 
     'users',
     'article',

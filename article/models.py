@@ -10,7 +10,7 @@ from unidecode import unidecode
 from django.template.defaultfilters import slugify
 # 文章分类
 from users.models import Profile
-
+from DjangoUeditor.models import UEditorField
 
 class Category(models.Model):
     name = models.CharField('栏目分类', max_length=100)
@@ -73,7 +73,8 @@ class ArticlePost(models.Model):
     excerpt = models.CharField(max_length=100, verbose_name='摘要')
     slug = models.SlugField('slug', max_length=60, blank=True)
     # 文章正文
-    body = models.TextField(verbose_name='内容')
+
+    body = UEditorField(verbose_name='内容')
     # 标题图
     avatar = models.ImageField(upload_to='article/%Y%m%d/', verbose_name='文章图片',default=default_image, blank=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, verbose_name='分类', blank=True, null=True)

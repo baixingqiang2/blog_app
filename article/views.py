@@ -1,6 +1,10 @@
+import re
+
 import markdown
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.utils.text import slugify
 from django.views.decorators.http import require_POST
+from markdown.extensions.toc import TocExtension
 
 from users.models import Profile
 from .models import ArticlePost, Category, Like, default_image
@@ -118,12 +122,21 @@ def article_admin(request):
     return render(request, 'article/article_admin_list.html', context)
 
 #文章详情
-# @login_required(login_url='/users/login/')
 def article_detail(request,slug,id):
     #取出对应文章
     if request.method == "GET":
         curr_article = get_object_or_404(ArticlePost,id=id, slug=slug)
-        curr_article.body = markdown.markdown(curr_article.body,extensions=['markdown.extensions.extra', 'markdown.extensions.codehilite','markdown.extensions.toc',])
+        md = markdown.Markdown(
+            extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+                # 'markdown.extensions.toc',
+                TocExtension(slugify=slugify),
+            ]
+        )
+        curr_article.body = md.convert(curr_article.body)
+        curr_toc = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+        curr_article.toc = curr_toc.group(1) if curr_toc is not None else ''
         # 取出文章评论
         comments = Comment.objects.filter(article=curr_article)
         # 该文章所有点赞
@@ -161,8 +174,9 @@ def article_detail(request,slug,id):
             'comments': comments,
             'pre_article': pre_article,
             'next_article': next_article,
-            'like_form':like_form,
-            'like_user':like_user
+            'like_form': like_form,
+            'like_user': like_user,
+            'toc': md.toc,
         }
         # render函数：载入模板，并返回context对象
         return render(request, 'article/detail.html', context)
