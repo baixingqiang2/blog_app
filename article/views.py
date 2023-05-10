@@ -2,6 +2,7 @@ import re
 
 import markdown
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.template.loader import render_to_string
 from django.utils.text import slugify
 from django.views.decorators.http import require_POST
 from markdown.extensions.toc import TocExtension
@@ -58,7 +59,7 @@ def article_list(request,*args,**kwargs):
 
 
     page = request.GET.get("page")
-    paginator = Paginator(article_list, 4)  # 实例化对象
+    paginator = Paginator(article_list, 6)  # 实例化对象
 
     try :
         allarticle = paginator.page(page)  # 根据URL(页数)，获取相应的数据
@@ -107,18 +108,24 @@ def article_admin(request):
         article_list = article_list.order_by('-total_views')
 
 
-    paginator = Paginator(article_list, 2)
-    page = request.GET.get('page')
-    articles = paginator.get_page(page)
+    paginator = Paginator(article_list,10)
+    page = request.GET.get('page',1)
 
-    # 增加 search 到 context
+    try :
+        articles = paginator.get_page(page)
+    except PageNotAnInteger :
+        # 如果页码不是一个整数，返回第一页
+        articles = paginator.get_page(1)
+    except EmptyPage :
+        # 如果页码超出范围，返回最后一页
+        articles = paginator.get_page(paginator.num_pages)
     context = {
         'search':search,
         'order':order,
         'articles': articles,
-
+        'page':page,
+        'paginator':paginator,
     }
-
     return render(request, 'article/article_admin_list.html', context)
 
 #文章详情
